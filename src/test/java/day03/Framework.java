@@ -162,33 +162,63 @@ public class Framework {
 	
 	public static String getCurrentWindowID()
 	{
-		return driver.getWindowHandle();
+		try {
+			return driver.getWindowHandle();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public static Set<String> getAllWindowID()
 	{
-		return driver.getWindowHandles();
+		try {
+			return driver.getWindowHandles();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public static void windowMax()
 	{
-		driver.manage().window().maximize();
+		try {
+			driver.manage().window().maximize();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public static void windowMin()
 	{
-		driver.manage().window().minimize();
+		try {
+			driver.manage().window().minimize();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public static void windowFullScreen()
 	{
-		driver.manage().window().fullscreen();
+		try {
+			driver.manage().window().fullscreen();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public static void browserClose()
 	{
-		driver.close();
+		try {
+			driver.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public static void browserQuit()
 	{
-		driver.quit();
+		try {
+			driver.quit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void actionDoubleClick(String xpathValue)
