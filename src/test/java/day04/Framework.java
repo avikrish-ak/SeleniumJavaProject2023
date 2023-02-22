@@ -31,23 +31,28 @@ public class Framework {
 			case "Chrome":
 				driver = new ChromeDriver();
 				test.log(LogStatus.INFO, "opened chrome browser");
+				passScreenShot(browserValue);
 				break;
 			case "FireFox":
 				driver = new FirefoxDriver();
 				test.log(LogStatus.INFO, "opened FireFox browser");
+				passScreenShot(browserValue);
 				break;
 			case "IE":
 				driver = new InternetExplorerDriver();
 				test.log(LogStatus.INFO, "opened IE browser");
+				passScreenShot(browserValue);
 				break;
 			case "Edge":
 				driver = new EdgeDriver();
 				test.log(LogStatus.INFO, "opened Edge browser");
+				passScreenShot(browserValue);
 				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			test.log(LogStatus.ERROR, e.getMessage());
+			failScreenShot(browserValue);
 		}
 	}
 	
@@ -57,9 +62,11 @@ public class Framework {
 		try {
 			driver.get(url);
 			test.log(LogStatus.INFO, "Open Application URL : "+url);
+			passScreenShot("app");
 		} catch (Exception e) {
 			e.printStackTrace();
 			test.log(LogStatus.ERROR, e.getMessage());
+			failScreenShot("app");
 		}
 	}
 	
@@ -68,9 +75,11 @@ public class Framework {
 		try {
 			driver.findElement(By.xpath(xpathValue)).sendKeys(dataValue);
 			test.log(LogStatus.INFO, "User Entered value in "+fieldName+" as "+dataValue);
+			passScreenShot(fieldName);
 		} catch (Exception e) {
 			e.printStackTrace();
 			test.log(LogStatus.ERROR, e.getMessage());
+			failScreenShot(fieldName);
 		}
 	}
 	
@@ -79,10 +88,11 @@ public class Framework {
 		try {
 			driver.findElement(By.xpath(xpathValue)).click();
 			test.log(LogStatus.INFO, "User Clicked in "+fieldName);
-			
+			passScreenShot(fieldName);
 		} catch (Exception e) {
 			e.printStackTrace();
 			test.log(LogStatus.ERROR, e.getMessage());
+			failScreenShot(fieldName);
 		}
 	}
 	
@@ -91,8 +101,10 @@ public class Framework {
 		try {
 			driver.findElement(By.xpath(xpathValue)).clear();
 			test.log(LogStatus.INFO, "User Cleared in "+fieldName);
+			passScreenShot(fieldName);
 		} catch (Exception e) {
 			e.printStackTrace();test.log(LogStatus.ERROR, e.getMessage());
+			failScreenShot(fieldName);
 		}
 	}
 	
@@ -102,9 +114,11 @@ public class Framework {
 			Select dropdown = new Select(driver.findElement(By.xpath(xpathValue)));
 			dropdown.selectByValue(dataValue);
 			test.log(LogStatus.INFO, "User Select Dropdown in "+fieldName+" as "+dataValue);
+			passScreenShot(fieldName);
 		} catch (Exception e) {
 			e.printStackTrace();
 			test.log(LogStatus.ERROR, e.getMessage());
+			failScreenShot(fieldName);
 		}
 	}
 	
@@ -114,9 +128,10 @@ public class Framework {
 			Select dropdown = new Select(driver.findElement(By.xpath(xpathValue)));
 			dropdown.selectByVisibleText(dataValue);
 			test.log(LogStatus.INFO, "User Select Dropdown in "+fieldName+" as "+dataValue);
-			
+			passScreenShot(fieldName);
 		} catch (Exception e) {
 			e.printStackTrace();test.log(LogStatus.ERROR, e.getMessage());
+			failScreenShot(fieldName);
 		}
 	}
 	
@@ -313,6 +328,30 @@ public class Framework {
 			File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 			File des = new File(".\\src\\test\\resources\\screenshot\\"+fileName+".png");
 			FileUtils.copyFile(src, des);
+		} catch (Exception e) {
+			e.printStackTrace();
+			test.log(LogStatus.ERROR, e.getMessage());
+		} 
+	}
+	public static void passScreenShot(String fileName)
+	{
+		try {
+			File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			File des = new File(".\\src\\test\\resources\\screenshot\\pass\\"+fileName+".png");
+			FileUtils.copyFile(src, des);
+			test.log(LogStatus.PASS, test.addScreenCapture(des.getAbsolutePath()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			test.log(LogStatus.ERROR, e.getMessage());
+		} 
+	}
+	public static void failScreenShot(String fileName)
+	{
+		try {
+			File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			File des = new File(".\\src\\test\\resources\\screenshot\\fail\\"+fileName+".png");
+			FileUtils.copyFile(src, des);
+			test.log(LogStatus.FAIL, test.addScreenCapture(des.getAbsolutePath()));
 		} catch (Exception e) {
 			e.printStackTrace();
 			test.log(LogStatus.ERROR, e.getMessage());
