@@ -2,28 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-02-24T09:54:03 IST" name="Suite" finished-at="2023-02-24T09:54:10 IST" duration-ms="7577">
+  <suite started-at="2023-03-02T09:43:35 IST" name="Default suite" finished-at="2023-03-02T09:43:54 IST" duration-ms="18983">
     <groups>
     </groups>
-    <test started-at="2023-02-24T09:54:03 IST" name="Test" finished-at="2023-02-24T09:54:10 IST" duration-ms="7577">
-      <class name="day06.Program05">
-        <test-method signature="testcase(java.lang.String,java.lang.String)[pri:0, instance:day06.Program05@3f6b0be5]" started-at="2023-02-24T09:54:03 IST" name="testcase" finished-at="2023-02-24T09:54:10 IST" duration-ms="7517" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[user01]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[test0123]]>
-              </value>
-            </param>
-          </params>
+    <test started-at="2023-03-02T09:43:35 IST" name="Default test" finished-at="2023-03-02T09:43:54 IST" duration-ms="18983">
+      <class name="day09.Project">
+        <test-method signature="testCase01()[pri:0, instance:day09.Project@6e0f5f7f]" started-at="2023-03-02T09:43:35 IST" name="testCase01" finished-at="2023-03-02T09:43:54 IST" duration-ms="18927" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testcase -->
-      </class> <!-- day06.Program05 -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+        </test-method> <!-- testCase01 -->
+      </class> <!-- day09.Project -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
